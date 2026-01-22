@@ -5,6 +5,8 @@ import java.time.LocalDate;
 public class Asalariado extends Trabajador {
     private double salarioBase;
     private int cantidadHorasExtra;
+    //para acceder desde el main
+    public static float importeHoraExtra = 50;
 
     public Asalariado(double salarioBase, int cantidadHorasExtra, int id, String nome, LocalDate datanac) {
         super(id, nome, datanac);

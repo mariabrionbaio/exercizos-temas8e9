@@ -1,17 +1,16 @@
-/*package tema8.trabajadores;
+package tema8.trabajadores;
 
 import java.util.*;
 import java.time.*;
 
 public class MainTrabajadores {
 
-    static Scanner scanner = new Scanner(System.in);
+    static Scanner t = new Scanner(System.in);
     static ArrayList<Asalariado> asalariados = new ArrayList<>();
     static ArrayList<ConsultorExterno> consultores = new ArrayList<>();
 
     public static void main(String[] args) {
 
-//inicializar importe horas trabajas y horas extra
         boolean salir = false;
         while (!salir) {
             int opcion = mostrarMenu();
@@ -33,7 +32,7 @@ public class MainTrabajadores {
                     listaTrabajadores();
                     break;
                 case 5:
-                    System.out.println("Total salarios:" + totalSalarios());
+                    System.out.println("Total salarios: " + String.format("%,.2f", totalSalarios()));
                     break;
                 case 0:
                     salir = true;
@@ -42,7 +41,7 @@ public class MainTrabajadores {
                     System.out.println("\n>>>>Opción no válida. Por favor, intenta de nuevo.\n");
             }
         }
-        scanner.close();
+        t.close();
     }
 
     private static int mostrarMenu() {
@@ -54,43 +53,92 @@ public class MainTrabajadores {
         System.out.println("5) Importe total salarios");
         System.out.println("0) Salir");
         System.out.print("---Seleccione una opción---\n");
-        return Integer.parseInt(scanner.nextLine());
+        return Integer.parseInt(t.nextLine());
     }
 
     static private void altaTrabajador() {
         System.out.println("Introduzca id");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = Integer.parseInt(t.nextLine());
         System.out.println("Introduzca nombre");
-        String nombre = scanner.nextLine();
+        String nombre = t.nextLine();
         System.out.println("Introduzca fecha nacimiento aaaa-mm-dd:");
-        LocalDate fecNac = LocalDate.parse(scanner.nextLine());
+        LocalDate fecNac = LocalDate.parse(t.nextLine());
 
-        System.out.println("Tipo: 1)Asalariado, 2) Consultor");
-        int tipo = Integer.parseInt(scanner.nextLine());
+        System.out.println("Tipo: 1)Asalariado, 2)Consultor");
+        int tipo = t.nextInt();
+        t.nextLine();
         if (tipo == 1) {  //asalariado
-            asalariados.add(new Asalariado(1564.23,0, id,nombre,fecNac));
+            System.out.println("Sueldo base del trabajador: ");
+            float sueldoB = t.nextFloat();
+            t.nextLine();
+            System.out.println("Cantidad horas extra: ");
+            int he = t.nextInt();
+            t.nextLine();
+            asalariados.add(new Asalariado(sueldoB, he, id,nombre,fecNac));
         } else {         //consultor
-            consultores.add(new ConsultorExterno(0, id, nombre, fecNac));
+            System.out.println("Horas trabajadas: ");
+            int ht = t.nextInt();
+            t.nextLine();
+            consultores.add(new ConsultorExterno(ht, id, nombre, fecNac));
         }
     }
 
     static private boolean bajaTrabajador() {
+        System.out.println("Introduzca id del trabajador a eliminar: ");
+        int id = t.nextInt();
+        t.nextLine();
+        //buscar en asalariados
+        for(Asalariado i : asalariados){
+            if(i.getId() == id){
+                asalariados.remove(i);
+                return true;
+            }
+        }
         
+        //buscar en consultores
+        for(ConsultorExterno i : consultores){
+            if(i.getId() == id){
+                consultores.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
 
     static private void modificarImportes() {
         System.out.println("Introduzca importe horas extra (asalariados)");
-        float impHorasExtra = Float.parseFloat(scanner.nextLine());
-        System.out.println("Introduzca importe horas trabajada (consultores)");
-        float impHorasTrabajada = Float.parseFloat(scanner.nextLine());
-
+        float impHorasExtra = t.nextFloat();
+        t.nextLine();
+        System.out.println("Introduzca importe horas trabajadas (consultores)");
+        float impHorasTrab = t.nextFloat();
+        t.nextLine();
+        
+        Asalariado.importeHoraExtra = impHorasExtra;
+        ConsultorExterno.importeHoraTrabajada = impHorasTrab;
+        
     }
 
     static private void listaTrabajadores() {
-
+        System.out.println("=========== ASALARIADOS =============");
+        for(Asalariado a: asalariados){
+            System.out.println(a.toString());
+        }
+        System.out.println("========== CONSULTORES EXTERNOS =============");
+         for(ConsultorExterno c: consultores){
+            System.out.println(c.toString());
+        }
     }
 
     static private float totalSalarios() {
-
+        float total = 0;
+        
+        for (Asalariado a : asalariados) {
+            total += a.calcularSalarioFinal(50);
+        }
+        for (ConsultorExterno c : consultores) {
+            total += c.calcularSalarioFinal(100);
+        }
+        
+        return total;
     }
-}*/
+}

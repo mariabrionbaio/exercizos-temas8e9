@@ -11,6 +11,9 @@ public class MainTrabajadores {
 
     public static void main(String[] args) {
 
+//inicializar importeHorasTrabajadas y horasExtra
+        Asalariado.importeHoraExtra = 50;
+        ConsultorExterno.importeHoraTrabajada = 100;
         boolean salir = false;
         while (!salir) {
             int opcion = mostrarMenu();
@@ -74,7 +77,7 @@ public class MainTrabajadores {
             System.out.println("Cantidad horas extra: ");
             int he = t.nextInt();
             t.nextLine();
-            asalariados.add(new Asalariado(sueldoB, he, id,nombre,fecNac));
+            asalariados.add(new Asalariado(sueldoB, he, id, nombre, fecNac));
         } else {         //consultor
             System.out.println("Horas trabajadas: ");
             int ht = t.nextInt();
@@ -88,16 +91,16 @@ public class MainTrabajadores {
         int id = t.nextInt();
         t.nextLine();
         //buscar en asalariados
-        for(Asalariado i : asalariados){
-            if(i.getId() == id){
+        for (Asalariado i : asalariados) {
+            if (i.getId() == id) {
                 asalariados.remove(i);
                 return true;
             }
         }
-        
+
         //buscar en consultores
-        for(ConsultorExterno i : consultores){
-            if(i.getId() == id){
+        for (ConsultorExterno i : consultores) {
+            if (i.getId() == id) {
                 consultores.remove(i);
                 return true;
             }
@@ -112,33 +115,33 @@ public class MainTrabajadores {
         System.out.println("Introduzca importe horas trabajadas (consultores)");
         float impHorasTrab = t.nextFloat();
         t.nextLine();
-        
+
         Asalariado.importeHoraExtra = impHorasExtra;
         ConsultorExterno.importeHoraTrabajada = impHorasTrab;
-        
+
     }
 
     static private void listaTrabajadores() {
         System.out.println("=========== ASALARIADOS =============");
-        for(Asalariado a: asalariados){
+        for (Asalariado a : asalariados) {
             System.out.println(a.toString());
         }
         System.out.println("========== CONSULTORES EXTERNOS =============");
-         for(ConsultorExterno c: consultores){
+        for (ConsultorExterno c : consultores) {
             System.out.println(c.toString());
         }
     }
 
     static private float totalSalarios() {
         float total = 0;
-        
+
         for (Asalariado a : asalariados) {
             total += a.calcularSalarioFinal(50);
         }
         for (ConsultorExterno c : consultores) {
             total += c.calcularSalarioFinal(100);
         }
-        
+
         return total;
     }
 }

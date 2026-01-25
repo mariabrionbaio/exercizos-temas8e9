@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainFiguras {
+    
+    static ArrayList<Figura2D> todas = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -54,6 +56,8 @@ public class MainFiguras {
 
         exercizo9_1();
         exercizo9_2();
+        
+        exercizo9_4();
     }
 
     public static void exercizo9_1() {
@@ -95,22 +99,64 @@ public class MainFiguras {
                     f2d.verDim();
                     System.out.println("Es cuadrado? " + ((Rectangulo) f2d).esCuadrado());
                     break;
-                case "3":
+                case "3":    //exercizo 9.3
                     System.out.println("Pon la medida y el color en 2 líneas diferentes");
                     float med4 = teclado.nextFloat();
+                    System.out.println(med4);
                     teclado.nextLine();
                     String cor = teclado.nextLine();
                     f2d = new TrianColor("escaleno", med4, med4, cor);
-                    System.out.println(f2d.toString());
                     ((Triangulo) f2d).area();
+                    System.out.println(" y es de color " + ((TrianColor) f2d).getColor());
                     break;
                 case "0":
-                    System.exit(0);
+                    return;
                 default:
                     System.out.println("Valor no válido. Vuelve a intentarlo...");
             }
         } while (!fig.equals("0"));
 
     }
+    
+    public static void exercizo9_4(){
+        
+        Figura2D r1 = new Rectangulo(2.56f,2.56f);
+        Figura2D r2 = new Rectangulo(4.84f,3.25f);
+        
+        Figura2D t1 = new Triangulo(3.57f);
+        Figura2D t2 = new Triangulo(4.5f);
+        
+        Figura2D t3 = new TrianColor("escaleno", 2.35f, 3.25f, "verde");
+        
+        todas.add(r1);
+        todas.add(r2);
+        todas.add(t1);
+        todas.add(t2);
+        todas.add(t3);
+        
+        sumatorio();
+    }
 
+    static void sumatorio(){
+        float area = 0.0f;
+        int triang = 0;
+        int rectang = 0;
+        for (Figura2D a : todas){
+            if(a instanceof Triangulo){
+                triang++;
+                area += ((Triangulo) a).area();
+            }else if(a instanceof TrianColor){
+                triang++;
+                area+= ((TrianColor) a).area();
+            }else if (a instanceof Rectangulo){
+                rectang++;
+                area += ((Rectangulo) a).area();
+            }else{
+                System.out.println("ERROR!");
+            }
+        }
+        System.out.println("El área de todas las figuras es " + area);
+        System.out.println("En el array hay " + triang + " triángulos y " + rectang + " rectángulos.");
+    }
+    
 }

@@ -6,7 +6,9 @@ public class Asalariado extends Trabajador{
   
     private double salarioBase;
     private int cantHorasExtra;
-
+    
+    public static double importeHExtras = 50.0;
+    
     public Asalariado(double salarioBase, int cantHorasExtra, int id, String nombre, LocalDate fechaNac) {
         super(id, nombre, fechaNac);
         this.salarioBase = salarioBase;

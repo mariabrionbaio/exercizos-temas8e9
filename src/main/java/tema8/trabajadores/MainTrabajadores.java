@@ -14,6 +14,7 @@ public class MainTrabajadores {
 //inicializar importeHorasTrabajadas y horasExtra
         Asalariado.importeHoraExtra = 50;
         ConsultorExterno.importeHoraTrabajada = 100;
+        
         boolean salir = false;
         while (!salir) {
             int opcion = mostrarMenu();

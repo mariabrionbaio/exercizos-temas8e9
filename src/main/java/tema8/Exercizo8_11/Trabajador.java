@@ -1,13 +1,15 @@
 package tema8.Exercizo8_11;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Trabajador {
 
     private int id;
     private String nombre;
     private LocalDate fechaNac;
+    
+    
+    
 
     public Trabajador(int id, String nombre, LocalDate fechaNac) {
         this.id = id;
@@ -56,7 +58,7 @@ public class Trabajador {
             return false; // distinta clase
         }
         Trabajador other = (Trabajador) obj;  //casteamos obj
-        return this.id == other.id;
+        return this.id == other.id;  //true ou false
     }
 
 }

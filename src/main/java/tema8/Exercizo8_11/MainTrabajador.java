@@ -3,6 +3,7 @@ package tema8.Exercizo8_11;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import tema8.alumnos.Alumno;
 
 public class MainTrabajador {
 

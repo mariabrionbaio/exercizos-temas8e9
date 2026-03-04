@@ -14,7 +14,7 @@ public class PacConsulta extends Paciente {
     
     @Override
     public void facturar(){
-        
+        System.out.println("FACTURA: 100€");
     }
     
 }

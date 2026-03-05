@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class ConsultorExterno extends Trabajador {
     
     private int horasTrabajadas;
-    public static double importeHTrabajadas = 100.0;
+    public static double pvpHTrab = 100.0;
 
     public ConsultorExterno(int horasTrabajadas, int id, String nombre, LocalDate fechaNac) {
         super(id, nombre, fechaNac);

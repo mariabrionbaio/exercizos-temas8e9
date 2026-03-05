@@ -10,7 +10,9 @@ public class PacConsulta extends Paciente {
         this.motivo = motivo;
     }
     
-    
+    void loquesea(){
+        System.out.println("lo que sea");
+    }
     
     @Override
     public void facturar(){

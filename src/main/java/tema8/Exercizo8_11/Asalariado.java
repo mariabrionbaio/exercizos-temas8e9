@@ -9,10 +9,11 @@ public class Asalariado extends Trabajador{
     
     public static double importeHExtras = 50.0;
     
-    public Asalariado(double salarioBase, int cantHorasExtra, int id, String nombre, LocalDate fechaNac) {
+    public Asalariado(int id, String nombre, LocalDate fechaNac, double salarioBase, int cantHorasExtra) {
         super(id, nombre, fechaNac);
-        this.salarioBase = salarioBase;
+       
         this.cantHorasExtra = cantHorasExtra;
+        this.salarioBase = salarioBase;
     }
 
     public double getSalarioBase() {

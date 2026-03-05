@@ -1,16 +1,14 @@
 package tema8.Exercizo8_11;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Trabajador {
+public class Trabajador implements Serializable{
 
     private int id;
     private String nombre;
     private LocalDate fechaNac;
     
-    
-    
-
     public Trabajador(int id, String nombre, LocalDate fechaNac) {
         this.id = id;
         this.nombre = nombre;
@@ -43,7 +41,7 @@ public class Trabajador {
 
     @Override
     public String toString() {
-        return "Trabajador { " + "id = " + id + ", nombre = " + nombre + ", fechaNac = " + fechaNac + " }";
+        return "Trabajador {id = " + id + ", nombre = " + nombre + ", fechaNac = " + fechaNac + " }";
     }
 
     @Override

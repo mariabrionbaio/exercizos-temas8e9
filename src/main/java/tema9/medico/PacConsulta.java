@@ -9,14 +9,11 @@ public class PacConsulta extends Paciente {
         super(nombre, fecNac);
         this.motivo = motivo;
     }
-    
-    void loquesea(){
-        System.out.println("lo que sea");
-    }
-    
+ 
     @Override
-    public void facturar(){
+    public double facturar(){
         System.out.println("FACTURA: 100€");
+        return 100.0;
     }
     
 }

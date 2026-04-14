@@ -11,7 +11,9 @@ public class PacRecetas extends Paciente {
         listaMedicamentos = listaMed;
     }
     
-    public void facturar(){
-        System.out.println("FACTURA: " + listaMedicamentos.size() * 5 + "€"); 
+    public double facturar(){
+        double fac = listaMedicamentos.size() * 5;
+        System.out.println("FACTURA: " + fac + "€"); 
+        return fac;
     }
 }

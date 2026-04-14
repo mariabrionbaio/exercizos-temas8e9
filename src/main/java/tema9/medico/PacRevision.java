@@ -11,12 +11,20 @@ public class PacRevision extends Paciente{
         this.visitaAnt = visitaAnt;
     }
     
-    public void facturar(){
+    public double facturar(){
         LocalDate hoy = LocalDate.now();
         LocalDate nacimiento = fecNac;
+        double fac;
         
-        if (Period.between(nacimiento, hoy).getYears() < 65) System.out.println("FACTURA: 50€");
-        else    System.out.println("FACTURA: 30€");
+        if (Period.between(nacimiento, hoy).getYears() < 65){
+                System.out.println("FACTURA: 50€");
+                fac = 50.0;
+        }
+        else    {
+            System.out.println("FACTURA: 30€");
+            fac = 30.0;
+        }
+        return fac;
     }
     
 }

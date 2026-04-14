@@ -12,6 +12,24 @@ public abstract class Paciente {
         fecNac = fn;
     }
 
-    public abstract void facturar();
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public LocalDate getFecNac() {
+        return fecNac;
+    }
+
+    public void setFecNac(LocalDate fecNac) {
+        this.fecNac = fecNac;
+    }
+    
+    
+
+    public abstract double facturar();
 
 }
